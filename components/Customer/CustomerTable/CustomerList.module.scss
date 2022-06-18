@@ -1,0 +1,115 @@
+.customerTable {
+  background: #ffffff;
+  box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
+  border-radius: 22px;
+  padding: 25px 20px;
+
+  .box {
+    .filter {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 0.5fr;
+      grid-column-gap: 20px;
+
+      @media all and (max-width: 800px) {
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+      }
+
+      .filterItem {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        background: #ffffff;
+        border: 2px solid #f5f3f8;
+        border-radius: 10px;
+        padding: 0 20px;
+        cursor: text;
+
+        input {
+          width: 100%;
+          margin-left: 10px;
+        }
+
+        &.selectItem {
+          padding: 0 !important;
+
+          select {
+            width: 100%;
+            background-color: #fff;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 20px;
+            height: 100%;
+            padding: 0 20px;
+            border-radius: 10px;
+
+
+          }
+
+        }
+      }
+    }
+
+    .table {
+      @media all and (max-width: 1024px) {
+        // max-width: 80vw;
+      }
+
+      overflow-x: auto;
+
+      table {
+        width: 100%;
+        margin-top: 35px;
+        min-width: 800px;
+
+        .thead {
+          th {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center;
+            color: #1b1c37;
+            border-top: 1px solid #f5f3f8;
+            border-bottom: 1px solid #f5f3f8;
+            padding: 20px 0;
+          }
+        }
+
+        .tbody {
+          tr {
+            td {
+              border-top: 1px solid #f5f3f8;
+              border-bottom: 1px solid #f5f3f8;
+
+              text-align: center;
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 21px;
+              color: #363352;
+              padding: 20px 0;
+
+              .actions {
+                display: flex;
+                align-items: center;
+                margin: 0 auto;
+                width: fit-content;
+
+                svg {
+                  &:first-child {
+                    margin-right: 26px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@mixin dashCard() {
+  background: #ffffff;
+  box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
+  border-radius: 22px;
+  padding: 30px;
+  overflow: hidden;
+  height: 100%;
+  @media all and (max-width: 1100px) {
+    padding: 20px !important;
+  }
+  @media all and (max-width: 720px) {
+    .box {
+      .head {
+        .title {
+          font-size: 18px !important;
+        }
+        .actions {
+          .ctaLink {
+            font-size: 12px !important;
+          }
+        }
+      }
+      .subHead {
+        margin-top: 30px !important;
+
+        h5 {
+          font-size: 12px !important;
+        }
+        h6 {
+          font-size: 12px !important;
+        }
+      }
+    }
+  }
+  .box {
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .title {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 105%;
+        color: #363352;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .ctaLink {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 21px;
+          text-decoration-line: underline;
+          cursor: pointer;
+          color: #363352;
+        }
+      }
+    }
+    .subHead {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h5 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+        color: #363352;
+      }
+      h6 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 120%;
+
+        color: #363352;
+      }
+    }
+  }
+}

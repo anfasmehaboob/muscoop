@@ -1,0 +1,173 @@
+.FromContainer {
+  width: 500px;
+
+  .numberContainer {
+    background: #ffffff;
+    border: 2px solid #f5f3f8;
+    border-radius: 10px;
+    padding: 12px 22px;
+    width: 100%;
+    display: block;
+    margin: 20px 0px;
+    font-size: 14px;
+    &::placeholder {
+      color: #363352;
+    }
+  }
+  .nameContainer {
+    background: #ffffff;
+    border: 2px solid #f5f3f8;
+    border-radius: 10px;
+    padding: 12px 22px;
+    width: 100%;
+    display: block;
+    margin: 20px 0px;
+    font-size: 14px;
+    &::placeholder {
+      color: #363352;
+    }
+  }
+  .billContainer {
+    background: #ffffff;
+    border: 2px solid #f5f3f8;
+    border-radius: 10px;
+    padding: 12px 22px;
+    width: 100%;
+    display: block;
+    margin: 20px 0px;
+    font-size: 14px;
+    &::placeholder {
+      color: #363352;
+    }
+  }
+  .emailContainer {
+    background: #ffffff;
+    border: 2px solid #f5f3f8;
+    border-radius: 10px;
+    padding: 12px 22px;
+    width: 100%;
+    display: block;
+    margin: 20px 0px;
+    font-size: 14px;
+    &::placeholder {
+      color: #363352;
+    }
+  }
+  .dateContainer {
+    display: flex;
+    .birthday {
+      flex-grow: 1;
+      input {
+        background: #ffffff;
+        border: 2px solid #f5f3f8;
+        border-radius: 10px;
+        padding: 12px 22px;
+        width: 100%;
+        display: block;
+        margin: 20px 0px;
+        font-size: 14px;
+      }
+    }
+    .Anniversary {
+      flex-grow: 1;
+      margin-left: 20px;
+      input {
+        background: #ffffff;
+        border: 2px solid #f5f3f8;
+        border-radius: 10px;
+        padding: 12px 22px;
+        width: 100%;
+        display: block;
+        margin: 20px 0px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .genderContainer {
+    display: flex;
+    justify-content: space-between;
+    .male {
+      background: #f5f3f8;
+      border: 2px solid #f5f3f8;
+      border-radius: 10px;
+      width: 237px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: -webkit-fill-available;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      h6 {
+        color: #363352;
+        font-weight: 700;
+        font-size: 14px;
+      }
+    }
+    .female {
+      background: #f5f3f8;
+      border: 2px solid #f5f3f8;
+      border-radius: 10px;
+      width: 237px;
+      padding: 15px 0;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: -webkit-fill-available;
+        opacity: 0;
+        cursor: pointer;
+      }
+      h6 {
+        color: #363352;
+        font-weight: 700;
+        font-size: 14px;
+      }
+    }
+  }
+  .customerTypeContainer{
+    display: flex;
+    margin-top: 23px;
+    justify-content: space-between;
+    .customerItemContainer{
+      input{
+        position: absolute;
+        width: 100%;
+        height: -webkit-fill-available;
+        opacity: 0;
+        cursor: pointer;
+      }
+      svg{
+        stroke: #E81A6E !important;
+      }
+      h5{
+        font-size: 14px;
+        font-weight: 700;
+        color: #363352;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+
+
+.activeGender{
+  background-color: #E81A6E !important;
+  h6{
+    color: #ffffff !important;
+  }
+}

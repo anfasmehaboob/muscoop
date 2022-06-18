@@ -1,0 +1,143 @@
+.topNav {
+  .parent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .mobileMenuBtn {
+      display: none;
+    }
+    @media all and (max-width: 1024px) {
+      .mobileMenuBtn {
+        display: block;
+      }
+    }
+    @media all and (max-width: 819px) {
+      .navInviteUser {
+        display: none !important;
+      }
+      .mobileMenuBtn {
+        display: block;
+      }
+    }
+    .left {
+      h2 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+        /* or 19px */
+
+        display: flex;
+        align-items: center;
+
+        color: #363352;
+      }
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      @mixin navCard($bgcolor: #fff) {
+        margin-left: 20px;
+        max-width: 250px;
+        border-radius: 50px;
+        height: 50px;
+        padding: 9px 23px;
+        background-color: $bgcolor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h5 {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 30px;
+          color: #ffffff;
+        }
+        input {
+          width: 100%;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 30px;
+          color: #ffffff;
+          background-color: $bgcolor;
+          border: 0;
+          outline: none;
+          padding: 5px 0;
+		/* hide arrows
+		 Chrome, Safari, Edge, Opera */
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none !important;
+				margin: 0 !important;
+			}
+		
+			/* Firefox */
+			&[type=number] {
+				-moz-appearance: textfield !important;
+			}
+        }
+        .icon {
+          margin-left: 10px;
+        }
+      }
+	  .searchUserSuggestion{
+		width: 250px !important;
+			border-radius: 20px !important;
+			margin-top: 6px !important;
+			background: #FFFFFF !important;
+			border: 2px solid #F5F3F8 !important;
+		  position: absolute;
+		  left: 0;
+		  top: 55px;
+		  border-radius: 50px;
+		  height: max-content;
+		  width: 100%;
+		padding: 9px 23px;
+		  .userItem{
+			  display: flex;
+			  align-items: center;
+			  justify-content: space-between;
+			  margin-bottom: 6px;
+.left{
+	h5{
+font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	color: #363352;
+	}
+	h6{
+font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 120%;
+	color: #363352;
+	}
+}
+.right{
+cursor: pointer;
+}
+		  }
+	  }
+      .navSearchUser {
+        @include navCard(#e81a6e);
+		margin-left: 0;
+		position: relative;
+		input{
+			color: #fff;
+			appearance: none;
+		}
+      }
+      .navInviteUser {
+        @include navCard(#5f5fc1);
+        cursor: pointer;
+      }
+    }
+  }
+}

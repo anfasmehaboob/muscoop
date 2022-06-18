@@ -1,0 +1,196 @@
+.mainContainer {
+    background: #e7edff;
+    padding: 115px 0px;
+    min-height: 100vh;
+   
+     
+     @media(max-width:'1180px'){
+      padding: 73px 50px;
+  
+     }
+  
+     @media(max-width:'1085px'){
+      padding: 115px 50px;
+  
+     }
+    @media(max-width:'991px'){
+      padding: 0px 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     }
+     @media(max-width:'450px'){
+      
+      padding: 0px 25px;
+  
+    
+     }
+     .secondContainer{
+       display: flex;
+       justify-content: center;
+       @media(max-width:'535px'){
+        display: block;
+        width: 100%;
+       }
+     }
+    .theSlider{
+      width: 600px;
+      margin-right: 110px;
+      @media(max-width:'1200px'){
+        width: 500px;
+        margin-right: 50px;
+      }
+      @media(max-width:'991px'){
+     display: none;
+     margin-right: 0px;
+    }
+    }
+    
+    .EmailContainer {
+      margin-top: 17px;
+      div {
+        background-color: #fff;
+        display: flex;
+        padding: 13px 17px;
+        border-radius: 10px;
+        align-items: center;
+        input {
+          background-color: unset;
+          flex-grow: 1;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    .passwordContainer {
+      margin-top: 17px;
+      div {
+        background-color: #fff;
+        display: flex;
+        padding: 13px 17px;
+        border-radius: 10px;
+        align-items: center;
+        input {
+          background-color: unset;
+          flex-grow: 1;
+          letter-spacing: 1px;
+          &:focus {
+            outline: none;
+          }
+        }
+        span {
+        }
+      }
+    }
+    .mobileContainer {
+      margin-top: 17px;
+  
+      .secondContainer {
+        display: flex;
+        @media(max-width:'450px'){
+          justify-content: unset;
+  
+          div:nth-child(2){
+            width: 100px;
+          }
+        
+         }
+        div:nth-child(1) {
+          div {
+            padding: 13px 17px;
+            border-radius: 10px;
+            margin-right: 20px;
+            @media(max-width:'378px'){
+             padding: 13px 8px;
+             margin-right: 10px;
+            
+             }
+          }
+          select {
+            background-color: unset;
+            cursor: pointer;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        div:nth-child(2) {
+          flex-grow: 1;
+          background-color: #fff;
+          padding: 13px 17px;
+          border-radius: 10px;
+          @media(max-width:'360px'){
+            padding: 13px 10px;
+          
+           }
+          input {
+            background-color: unset;
+            flex-grow: 1;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+    .submitButton {
+      background: #e81a6e;
+      width: 100%;
+      padding: 10px 0px;
+      border-radius: 10px;
+      color: #ffffff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 20px;
+      margin-top: 60px;
+      cursor: pointer;
+    }
+   
+    label {
+      font-weight: 400;
+      font-size: 14px;
+      font-family: "Poppins";
+      text-transform: capitalize;
+    }
+  
+    .forgotContainer {
+      display: flex;
+      margin-top: 17px;
+      justify-content: center;
+      p:nth-child(1) {
+        margin-right: 20px;
+      }
+    }
+
+    .passwordOption{
+        display: flex;
+        margin-top: 40px;
+        span{
+            flex-grow: 1;
+            text-align: center;
+            padding: 15px 0px;
+            font-weight: 400;
+            
+font-size: 14px;
+            &:nth-child(1){
+                border-radius: 10px 0px 0px 10px;
+            }
+            &:nth-child(2){
+                border-radius: 0px 10px 10px 0px;
+            }
+        };
+    }
+    .LoginContainer{
+      width: 450px;
+      @media(max-width:'535px'){
+        display: block;
+        width: 100%;
+       }
+      form{
+        width: 100%;
+      }
+    }
+  }
+
+   
