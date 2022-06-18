@@ -1,0 +1,63 @@
+.mainContainer{
+
+    background-color: #fff;
+    padding: 47px 43px;
+    border-radius: 22px;
+    width: 550px;
+    @media(max-width:'600px'){
+        border-radius: 0px;
+
+    }
+    @media(max-width:'420px'){
+        padding: 47px 20px;
+        height: 100vh;
+
+    }
+
+    h5{
+        font-weight: 700;
+        font-size: 15px;
+        color: #363352;
+        margin-top: 54px;
+    }
+    h3{
+        font-weight: 700;
+font-size: 22px;
+color: #363352;
+margin-bottom: 40px;
+    }
+
+    .locationSelect{
+        background: #FFFFFF;
+border: 2px solid #F5F3F8;
+border-radius: 10px;
+width: 100%;
+padding: 15px 22px;
+    }
+    .textInput{
+        background: #FFFFFF;
+border: 2px solid #F5F3F8;
+border-radius: 10px;
+padding: 12px 22px;
+width: 100%;
+display: block;
+margin: 20px 0px;
+font-size: 14px;
+&::placeholder{
+    color: #363352;
+}
+
+    }
+    .button{
+        background: #E81A6E;
+border-radius: 40px;
+text-align: center;
+font-weight: 700;
+font-size: 15px;
+letter-spacing: 1px;
+color: #FFFFFF;
+padding: 8px 47px;
+cursor: pointer;
+    }
+
+}
