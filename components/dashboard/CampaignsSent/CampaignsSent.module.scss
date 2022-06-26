@@ -1,0 +1,127 @@
+@import '../../../styles//Base.scss';
+
+// campaignsSent
+.campaignsSent {
+    @include dashCard();
+    @media all and (max-width: 620px) {
+      .campaigns{
+        .campaignItem{
+          padding: 10px !important;
+          .left{
+           
+            .bottom{
+              flex-wrap: wrap;
+              flex-direction: column;
+              align-items: flex-start !important;
+              h4{
+                font-size: 15px !important;
+              }
+              h5{
+                white-space: nowrap !important;
+                margin-left: 0 !important;
+                margin-top: 5px;
+              }
+            }
+          }
+          .right{
+            h3{
+              font-size: 17px !important;
+            }
+          }
+        }
+      }
+    }
+    .campaigns {
+      margin-top: 50px;
+      .campaignItem {
+        margin-bottom: 30px;
+        &:last-child {
+          margin: 0;
+        }
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        background: #ffffff;
+        mix-blend-mode: normal;
+        border: 2px solid #f9f9f9;
+        border-radius: 10px;
+        .left {
+          h3 {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 24px;
+            /* identical to box height */
+
+            display: flex;
+            align-items: center;
+
+            color: #363352;
+          }
+
+          .bottom {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            h4 {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 20px;
+              line-height: 120%;
+            }
+            h5 {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 21px;
+              margin-left: 8px;
+              color: #363352;
+            }
+          }
+        }
+        .right {
+          text-align: end;
+          h3 {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 120%;
+
+            color: #363352;
+          }
+          h4 {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 115%;
+            /* or 19px */
+
+            display: flex;
+            align-items: center;
+
+            color: #363352;
+          }
+        }
+      }
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: end;
+      h6 {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+
+        text-decoration-line: underline;
+
+        color: #363352;
+      }
+    }
+  }

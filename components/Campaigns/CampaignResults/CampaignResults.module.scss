@@ -1,0 +1,39 @@
+@import '../../../styles/Base.scss';
+
+.campaignResults{
+
+    @include dashCard();
+    .progressPoints{
+        margin-top: 74px;
+        display: grid;
+        grid-gap: 37px;
+        .progressItem{
+            h5{
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 120%;
+                color: #77777B;
+            }
+            .bar{
+                margin-top: 6px;
+                display: flex;
+                align-items: center;
+                svg{
+                    height: 8px;
+                    width: 100%;
+                }
+                h6{
+                    margin-left: 8px;
+                    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #E81A6E;
+                }
+            }
+        }
+      }
+}

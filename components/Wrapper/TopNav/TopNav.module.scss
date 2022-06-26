@@ -1,16 +1,39 @@
 .topNav {
+  margin-bottom: 70px;
   .parent {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr auto;
+align-items: center;
+grid-template-areas: 'left nav';
     .mobileMenuBtn {
       display: none;
+      grid-area: mobileMenu;
     }
     @media all and (max-width: 1024px) {
+    grid-template-columns: 24px 1fr auto;
+    grid-template-areas: 'mobileMenu left nav';
+
       .mobileMenuBtn {
         display: block;
       }
     }
+    @media all and (max-width: 620px) {
+  grid-template-areas: 'mobileMenu nav'
+  'left left';
+  justify-items: end;
+        .mobileMenuBtn {
+          display: block;
+        }
+        .left{
+          width: 100%;
+          .serachBox{
+            width: 100%;
+
+            max-width: 100% !important;
+          }
+        }
+      }
     @media all and (max-width: 819px) {
       .navInviteUser {
         display: none !important;
@@ -20,29 +43,119 @@
       }
     }
     .left {
-      h2 {
-        font-family: "Poppins";
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 120%;
-        /* or 19px */
+      grid-area: left;
+      .navSearchUser{
+        position: relative;
+        
+        .serachBox{
+          background: #FFFFFF;
+border: 2px solid #F5F3F8;
+max-width: 400px;
+height: 60px;
+border-radius: 10px;
+padding: 15px 20px;
+          input{
+            height: 100%;
+            width: 100%;
+border: none;
+outline: 0;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+color: #363352;
 
-        display: flex;
-        align-items: center;
+}
+&[data-menu="open"]{
+ border-radius: 10px 10px 0 0 !important; 
+}
+        }
+        .searchUserSuggestion{
+            border-radius: 0 0 10px 10px !important;
+            background: #F5F3F8;
+            border: 2px solid #F5F3F8;
+            position: absolute;
+            left: 0;
+            top: 58px;
+            width: 100%;
+            .listBox{
+              &[data-count="1"]{
+                .userItem{
 
-        color: #363352;
+                  border-radius: 0 0 10px 10px !important;
+                }
+
+              }
+              .userItem{
+                background-color: #fff;
+              padding: 9px 23px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 2px;
+              height: 60px;
+              &:last-child{
+                border-radius: 0 0 10px 10px;
+              }
+              &:first-child{
+                border-radius: 0;
+              }
+     
+  h5{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+color: #363352;
+  }
+  h6{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 120%;
+color: #363352;
+  }
+            }
+          }
+          .footer{
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            padding: 6px 8px;
+            height: 30px;
+            h5{
+              font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 8px;
+line-height: 9px;
+color: #979797;
+            }
+            img{
+              width: 81px;
+              display: block;
+              margin-left: 9px;
+height: 15px;
+            }
+          }
+          }
       }
+     
+         
     }
     .nav {
+      grid-area: nav;
       display: flex;
       align-items: center;
       @mixin navCard($bgcolor: #fff) {
         margin-left: 20px;
         max-width: 250px;
         border-radius: 50px;
-        height: 50px;
-        padding: 9px 23px;
+        height: 45px;
+        padding: 9px 20px;
         background-color: $bgcolor;
         display: flex;
         align-items: center;
@@ -50,8 +163,8 @@
         h5 {
           font-family: "Poppins";
           font-style: normal;
-          font-weight: 600;
-          font-size: 18px;
+          font-weight: 500;
+          font-size: 15px;
           line-height: 30px;
           color: #ffffff;
         }
@@ -59,8 +172,8 @@
           width: 100%;
           font-family: "Poppins";
           font-style: normal;
-          font-weight: 700;
-          font-size: 20px;
+          font-weight: 500;
+          font-size: 15px;
           line-height: 30px;
           color: #ffffff;
           background-color: $bgcolor;
@@ -84,59 +197,53 @@
           margin-left: 10px;
         }
       }
-	  .searchUserSuggestion{
-		width: 250px !important;
-			border-radius: 20px !important;
-			margin-top: 6px !important;
-			background: #FFFFFF !important;
-			border: 2px solid #F5F3F8 !important;
-		  position: absolute;
-		  left: 0;
-		  top: 55px;
-		  border-radius: 50px;
-		  height: max-content;
-		  width: 100%;
-		padding: 9px 23px;
-		  .userItem{
-			  display: flex;
-			  align-items: center;
-			  justify-content: space-between;
-			  margin-bottom: 6px;
-.left{
-	h5{
-font-family: 'Poppins';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 21px;
-	color: #363352;
-	}
-	h6{
-font-family: 'Poppins';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 120%;
-	color: #363352;
-	}
-}
-.right{
-cursor: pointer;
-}
-		  }
-	  }
-      .navSearchUser {
-        @include navCard(#e81a6e);
-		margin-left: 0;
-		position: relative;
-		input{
-			color: #fff;
-			appearance: none;
-		}
-      }
+
       .navInviteUser {
         @include navCard(#5f5fc1);
         cursor: pointer;
+      }
+      .notification{
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #F5F3F8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+
+        
+      }
+      .profile{
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .photo{
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          background: #F5F3F8;
+          img{
+display: block;
+width: 100%;
+height: 100%;
+object-fit: cover;
+          }
+        }
+        h2{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 120%;
+          color: #363352;
+          margin: 0 10px 0 9px;
+        }
+        svg{
+
+        }
       }
     }
   }

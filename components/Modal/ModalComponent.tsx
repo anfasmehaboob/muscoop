@@ -1,16 +1,12 @@
 import Modal from "react-modal";
+import styles from "./Modal.module.scss";
 
 interface Props {
   modalIsOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   children?: JSX.Element;
 }
 
-export default function ModalComponent({
-  modalIsOpen,
-  setIsOpen,
-  children,
-}: Props) {
+export default function ModalComponent({ modalIsOpen, children }: Props) {
   const customStyles = {
     content: {
       top: "50%",
@@ -26,18 +22,14 @@ export default function ModalComponent({
     },
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
   return (
     <div>
       <Modal
         isOpen={modalIsOpen}
         contentLabel="Example Modal"
-        style={customStyles}
+        className={styles.Modal}
+        overlayClassName={styles.Overlay}
       >
-        <button onClick={closeModal}>close</button>
-
         {children}
       </Modal>
     </div>

@@ -1,0 +1,27 @@
+.Modal {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  right: 0;
+  left: 0;
+
+  background-color: #d8dbe5;
+  &:focus-visible {
+    outline: none;
+  }
+  .modalButton {
+    background-color: #f5f3f8;
+    padding: 5px;
+    border-radius: 3px;
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d8dbe5;
+  z-index: 10;
+}

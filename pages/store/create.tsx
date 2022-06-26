@@ -7,9 +7,7 @@ type Props = {}
 export default function Storecreate({}: Props) {
   return (
     <div className={styles.mainContainer}>
-
-      <Createstore />
-        
+       <Createstore />
     </div>
   )
 }

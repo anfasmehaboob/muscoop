@@ -1,15 +1,17 @@
 import React, { useMemo } from "react";
-import CustomerTable from "../components/Customer/CustomerTable";
-import Wrapper from "../components/Wrapper/Wrapper";
-import styles from "../styles/Customer.module.scss";
+import CustomerTable from "../../components/Customer/CustomerTable";
+import Wrapper from "../../components/Wrapper/Wrapper";
+import styles from "../../styles/Customer.module.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import CustomerStatics from "../components/dashboard/CustomerStatics/CustomerStatics";
-import TakeAction from "../components/dashboard/TakeAction/TakeAction";
-import ModalComponent from "../components/Modal/ModalComponent";
-import CustomerAnalysis from "../components/dashboard/CustomerAnalysis/CustomerAnalysis";
-import RewardPoints from "../components/Customer/RewardPoints";
-import GenderStatus from "../components/Customer/GenderStatus";
-import UpcomingBirthDays from "../components/Customer/UpcomingBirthdays";
+import CustomerStatics from "../../components/dashboard/CustomerStatics/CustomerStatics";
+import ModalComponent from "../../components/Modal/ModalComponent";
+import CustomerAnalysis from "../../components/dashboard/CustomerAnalysis/CustomerAnalysis";
+import RewardPoints from "../../components/Customer/RewardPoints";
+import GenderStatus from "../../components/Customer/GenderStatus";
+import UpcomingBirthDays from "../../components/Customer/UpcomingBirthdays";
+import TakeAction from "../../components/dashboard/TakeAction/TakeAction";
+import Addcustomer from "../../components/Customer/CustomerModal/AddCustomer";
+import AddVisit from "../../components/Customer/CustomerModal/AddVisit";
 
 type Props = {};
 
@@ -23,14 +25,14 @@ const Customer = (props: Props) => {
   return (
     <Wrapper>
       <button onClick={openModal}>Open Modal</button>
-      <ModalComponent modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}>
-       
-       <>
-       </>
-        {/* <Addcustomer /> */}
+      <ModalComponent modalIsOpen={modalIsOpen}>
+        <>
+          {/* <Addcustomer setIsOpen={setIsOpen} /> */}
+          <AddVisit setIsOpen={setIsOpen} />
+        </>
       </ModalComponent>
 
-      <div className={styles.customer} id="customer">
+      <div className={styles.customer} id="tab">
         <div className={styles.parent}>
           <div className={styles.head}>
             <h2>Customer</h2>

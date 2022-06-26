@@ -1,6 +1,6 @@
 import { Circle } from "rc-progress";
 import React from "react";
-import styles from "../dashboard.module.scss";
+import styles from "./CustomerAnal.module.scss";
 
 interface Props {
   data: number[]

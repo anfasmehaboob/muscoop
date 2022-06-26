@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import styles from "../dashboard.module.scss";
+import styles from "./CustomerStatics.module.scss";
 
 type Props = {};
 

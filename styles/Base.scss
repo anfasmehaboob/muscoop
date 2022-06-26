@@ -1,7 +1,9 @@
 @mixin dashCard() {
   background: #ffffff;
-  box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
-  border-radius: 22px;
+  // box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
+  // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  border-radius: 12px;
   padding: 30px;
   overflow: hidden;
   height: 100%;
@@ -11,9 +13,6 @@
   @media all and (max-width: 720px) {
     .box {
       .head {
-        .title {
-          font-size: 18px !important;
-        }
         .actions {
           .ctaLink {
             font-size: 12px !important;
@@ -21,7 +20,7 @@
         }
       }
       .subHead {
-        margin-top: 30px !important;
+        
 
         h5 {
           font-size: 12px !important;

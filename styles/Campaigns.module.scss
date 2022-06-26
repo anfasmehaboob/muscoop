@@ -1,0 +1,67 @@
+.campaigns{
+    .container{
+        .tabHead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            ul {
+              width: fit-content;
+              margin-top: 28px;
+              display: flex;
+              align-items: center;
+              position: relative;
+              &::after {
+                content: "";
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-bottom: 2px solid #f5f3f8;
+              }
+              li {
+                cursor: pointer;
+                font-family: "Poppins";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 120%;
+                color: #363352;
+                padding-bottom: 7px;
+                margin-right: 30px;
+      
+                &:last-child {
+                  margin: 0;
+                }
+              }
+            }
+      
+            
+           
+          }
+          .tabItem{
+            margin-top: 25px;
+            .gridOne{
+              display: grid;
+              grid-gap: 20px;
+              grid-template-columns: 1fr 1fr;
+              grid-template-areas: 'campaignStatus campaignStatus'
+              'campaignsSent campaignResults';
+              @media all and (max-width: 1300px) {
+                grid-template-areas: 'campaignStatus campaignStatus'
+              'campaignsSent campaignsSent'
+              'campaignResults campaignResults';
+              }
+              .campaignStatus{
+grid-area: campaignStatus;
+              }
+              .campaignsSent{
+grid-area: campaignsSent;
+              }
+              .campaignResults{
+                grid-area: campaignResults;
+              }
+            }
+          }
+    }
+}

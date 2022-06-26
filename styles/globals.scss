@@ -13,10 +13,10 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:active,
 input:-webkit-autofill:focus {
-    background-color: #FFFFFF !important;
-    color: #555 !important;
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    -webkit-text-fill-color: #555555 !important;
+  background-color: #ffffff !important;
+  color: #555 !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #555555 !important;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -24,17 +24,19 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input,select{
+input,
+select {
   outline: 0;
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-*{
-  font-family: "Poppins", sans-serif;}
+* {
+  font-family: "Poppins", sans-serif;
+}
 
 a {
   color: inherit;
@@ -47,120 +49,130 @@ a {
 
 // custom slick design
 
-.slick-dots li{
+.slick-dots li {
   margin: 0 3px !important;
 }
 
-.slick-dots li button:before{
+.slick-dots li button:before {
   font-size: 10px !important;
 }
-.slick-dots{
+.slick-dots {
   position: unset !important;
   margin-top: 25px !important;
 }
-.errorMSG{
+.errorMSG {
   color: tomato;
 }
-.desktoperror{
+.desktoperror {
   display: block;
-  @media (max-width:'991px'){
+  @media (max-width: "991px") {
     display: none;
   }
 }
-.mobileerror{
+.mobileerror {
   display: none;
-  @media (max-width:'991px'){
+  @media (max-width: "991px") {
     display: block;
   }
 }
 
-
 // custom wrap
 
-.customCheckbox{
+.customCheckbox {
   position: relative;
   width: 24px;
   height: 24px;
   background: white;
   border-radius: 2px;
-  input{
+  input {
     position: absolute;
     opacity: 0;
     z-index: 3;
   }
-  svg{
+  svg {
     position: absolute;
     display: none;
     top: 8px;
     right: 30%;
   }
 
-  input[type="checkbox"]:checked + svg{
+  input[type="checkbox"]:checked + svg {
     display: block;
   }
-
-
-}      
-.modalContainer{
-  background: #FFFFFF;
-box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
-border-radius: 22px;
-}       
-.preveImg{
+}
+.modalContainer {
+  background: #ffffff;
+  box-shadow: -1px 5px 30px rgba(0, 0, 0, 0.13);
+  border-radius: 22px;
+}
+.preveImg {
   width: 40%;
   margin: 0 auto;
 }
-.hideinput{
+.hideinput {
   visibility: hidden;
 }
 // top nav
-.szh-menu{
-  width: 250px !important;
-  border-radius: 20px !important;
-  margin-top: 6px !important;
-  background: #FFFFFF !important;
-    border: 2px solid #F5F3F8 !important;
+.szh-menu {
+  // width: 250px !important;
+  // border-radius: 20px !important;
+  // margin-top: 6px !important;
+  // background: #FFFFFF !important;
+  //   border: 2px solid #F5F3F8 !important;
 }
-.otpContrainer{
-  div{
-    div{
+.otpContrainer {
+  div {
+    div {
       margin-right: 10px;
-      input{
+      input {
         width: 42px !important;
         height: 42px;
         border-radius: 7px;
-        &:focus{
+        &:focus {
           outline: none;
         }
       }
     }
   }
-  span{
+  span {
     display: none;
   }
 }
 
-
 // customer
-#customer{
-  .react-tabs__tab.react-tabs__tab--selected{
+#tab {
+  .react-tabs__tab.react-tabs__tab--selected {
     padding-bottom: 7px;
-    border-bottom: 2px solid #02AA45;
-z-index: 5;
+    border-bottom: 2px solid #02aa45;
+    z-index: 5;
+    outline: none;
   }
 }
 // map customization
 
-.pac-container{
-  border: 2px solid #F5F3F8 !important;
+.pac-container {
+  border: 2px solid #f5f3f8 !important;
   border-radius: 11px;
-  box-shadow: rgb(0 0 0 / 10%) 0px 10px 15px -3px, rgb(0 0 0 / 5%) 0px 4px 6px -2px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 10px 15px -3px,
+    rgb(0 0 0 / 5%) 0px 4px 6px -2px;
   width: 460px !important;
-  .pac-item{
+  .pac-item {
     padding: 4px 4px !important;
   }
 }
 
-.pac-logo:after{
+.pac-logo:after {
   background-image: none !important;
+}
+
+.hideP {
+  display: none;
+}
+
+// custom validator for modal
+
+.errorMessage {
+  font-size: 12px;
+  color: tomato;
+  margin-left: 10px;
 }

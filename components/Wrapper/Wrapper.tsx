@@ -1,26 +1,32 @@
 /* eslint-disable react/jsx-no-undef */
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import MainDrawer from "./MainDrawer/MainDrawer";
 import TopNav from "./TopNav/TopNav";
 import styles from "./Wrapper.module.scss";
 import Drawer from "rc-drawer";
 import Router from "next/router";
-import Image from 'next/image'
+import Image from "next/image";
+
 interface WrapperProps {
   children: ReactNode;
 }
 
-
-
 const Wrapper = ({ children }: WrapperProps) => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [Loader,setLoader] = useState(false)
+  const [Loader, setLoader] = useState(false);
+  const [manageLoader,setManageLoader] = useState(false)
 
-  Router.events.on('routeChangeStart', ()=> setLoader(true))
-Router.events.on('routeChangeComplete',  ()=>  setLoader(false) )
-Router.events.on('routeChangeError', ()=> setLoader(false) )
+  Router.events.on("routeChangeStart", () => {setLoader(true),setManageLoader(true)});
+  Router.events.on("routeChangeComplete", ()=> setLoader(false));
+  Router.events.on("routeChangeError", () => {setLoader(false),setManageLoader(false)});
 
+  useEffect(()=> {
+setTimeout(() => {
+  setManageLoader(false)
+}, 3000);
+  },[Loader])
 
+  console.log("check 1");
 
   return (
     <div className={styles.wrapper}>
@@ -44,14 +50,18 @@ Router.events.on('routeChangeError', ()=> setLoader(false) )
           </div>
         </div>
         <aside className={styles.aside}>
-          {Loader && (
-
-          <div className={styles.loader}>
-            <div>
-
-            <Image title="Loading..." src="/asset/loader_main.gif" alt="loader" width={80} height={80} />
+          {Loader && manageLoader && (
+            <div className={styles.loader}>
+              <div>
+                <Image
+                  title="Loading..."
+                  src="/asset/loader_main.gif"
+                  alt="loader"
+                  width={80}
+                  height={80}
+                />
+              </div>
             </div>
-          </div>
           )}
           <div className={styles.topNav}>
             <TopNav setOpen={setOpenDrawer} open={openDrawer} />

@@ -1,0 +1,81 @@
+@import '../../../styles//Base.scss';
+
+.takeAction {
+  @include dashCard();
+  // grid-area: 3 / 2 / 4 / 4;
+  @media all and (max-width: 1380px) {
+    // grid-area: 5 / 1 / 5 / 4;
+  }
+  @media all and (max-width: 1020px) {
+    // grid-area: 6 /1/ 7/ 1 !important;
+  }
+  .actionsList {
+    .actionItem {
+      margin-top: 26px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 0.7fr 1fr;
+      align-items: center;
+      min-height: 60px;
+      background: #f5f3f8;
+      @media all and (max-width: 600px) {
+        .left {
+          font-weight: 600 !important;
+          font-size: 15px !important;
+          padding: 10px 10px !important;
+          height: 100%;
+        }
+        .right {
+          padding: 10px 10px !important;
+        }
+      }
+      &:hover {
+        .left {
+          background: #e81a6e;
+          color: #fff;
+
+        }
+        .right {
+          svg {
+            path {
+              fill: #000;
+            }
+          }
+        }
+      }
+      .left {
+        padding: 12px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 120%;
+        color: #363352;
+      }
+      .right {
+        padding: 12px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        h5 {
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 21px;
+
+          color: #363352;
+        }
+        svg {
+          margin-left: 15px;
+          cursor: pointer;
+          path {
+            fill: #bd98a3;
+          }
+        }
+      }
+    }
+  }
+}

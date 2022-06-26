@@ -17,17 +17,30 @@ interface Props {
 const TopNav = ({ setOpen, open }: Props) => {
   const ref = useRef<any>();
   const [openMenu, setOpenMenu] = useState(false);
-  const [phone, setPhone] = useState<number | string>();
+  const [phone, setPhone] = useState<number | string>("");
   useEffect(() => {
-    if (phone) {
+    if (phone != "") {
       setOpenMenu(true);
+    } else {
+      setOpenMenu(false);
     }
   }, [phone]);
-  console.log(ref);
+
+  useEffect(() => {
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+    function handleClick(e: any) {
+      if (ref && ref.current) {
+        const el: any = ref.current;
+        if (!el.contains(e.target)) {
+          setOpenMenu(false);
+        }
+      }
+    }
+  }, []);
   return (
     <div className={styles.topNav}>
       <div className={styles.parent}>
-        <div className={styles.left}>
           <div className={styles.mobileMenuBtn}>
             <svg
               onClick={() => setOpen(!open)}
@@ -45,99 +58,101 @@ const TopNav = ({ setOpen, open }: Props) => {
               />
             </svg>
           </div>
-          {/* <h2>Hi McDonald's</h2> */}
-        </div>
-        <div className={styles.nav}>
-          {/* <ControlledMenu
-            state={openMenu ? "open" : "closed"}
-            anchorRef={ref}
-            onClose={() => setOpenMenu(false)}
-          > */}{" "}
-          {/* </ControlledMenu> */}
-          <div className={styles.navSearchUser} ref={ref}>
-            {phone && (
+        <div className={styles.left}>
+
+          <div className={styles.navSearchUser}>
+            <div
+              data-menu={openMenu == true ? "open" : "closed"}
+              className={styles.serachBox}
+              ref={ref}
+            >
+              <input
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                }}
+                type="text"
+                placeholder="Search Customer"
+              />
+            </div>
+            {phone !== "" && openMenu && (
               <div className={styles.searchUserSuggestion}>
-                <div className={styles.userItem}>
-                  <div className={styles.left}>
-                    <h5>Junaid</h5>
-                    <h6>9656609275</h6>
-                  </div>
-                  <div className={styles.right}>
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                    >
-                      <g>
-                        <rect
-                          width="32"
-                          height="32"
-                          transform="matrix(-1 0 0 1 32 0)"
-                          fill="url(#pattern0)"
+                <div data-count={"2"} className={styles.listBox}>
+                  <div className={styles.userItem}>
+                    <div className={styles.left}>
+                      <h5>Junaid</h5>
+                      <h6>9656609275</h6>
+                    </div>
+                    <div className={styles.right}>
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M5.5 8.41828C5.5 6.02317 7.40279 4.08154 9.75 4.08154C12.0972 4.08154 14 6.02317 14 8.41828C14 10.8134 12.0972 12.755 9.75 12.755C7.40279 12.755 5.5 10.8134 5.5 8.41828ZM9.75 5.61216C8.23122 5.61216 7 6.8685 7 8.41828C7 9.96806 8.23122 11.2244 9.75 11.2244C11.2688 11.2244 12.5 9.96806 12.5 8.41828C12.5 6.8685 11.2688 5.61216 9.75 5.61216Z"
+                          fill="#363352"
                         />
-                      </g>
-                      <defs>
-                        <pattern
-                          id="pattern0"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_469_1280"
-                            transform="scale(0.00444444)"
-                          />
-                        </pattern>
-                        <image
-                          id="image0_469_1280"
-                          width="225"
-                          height="225"
-                          xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAY1BMVEX///8AAAD39/eZmZmYmJicnJxnZ2ff399iYmJubm5ra2s+Pj7q6urNzc35+fl1dXXt7e3BwcHY2NiNjY0VFRVOTk4uLi4iIiK1tbVJSUlUVFQZGRl9fX05OTnIyMhaWlqtra3KLCpXAAACw0lEQVR4nO3dW3PaMBCGYW+AkoNJSElCTiX9/7+yg9MLIMbawZLWWr3Pdaez32hl2ZYjmgYAAAAAAAAAAAAAAAAAAAAAAGCa2na1atfWVSSz3LxJ533hMuT6Rg5s7q3rie5RTiytK4pscRpQ5NG6pqhmPwOK/LauKqJ5X0D5uLKuK5r+gCKf1oXFci6gSGtdWhy9c/Dbxrq2KM6PoMgf6+JiGAroYlEcDuhgwRiYg53iV/3ACIq8Wlc4UjCgrKxLHCfUosXPw/AIyrboZyhFQLm1LnIMTUDZWVc5gmIOitxZVzmCagRLvs7oAi6sy7ycqkXlwbrMy+kC/rIu83K6FnUf8Ma6zMvpWrTgpZ4WrWME3c9B9y3qPqD7FnUf0H2LskxMF7dqHebgdLlfJnq+sqixRb+a+6vRbF6Q6wLKk+6fBf6Tu+tZ9i1VXYvG9Jx3u0p3kYnsOmNAZYvG9pLtIxWjgCLbTB9vmrTot7csAc1GcG/mPaBI+o/+8i8Tx+beAybfXDVu0b20NzcTCJj2SxzzFt1L+TXVzjpcJ+kWufsxrGAeTiJi6gdF80ZN/7GRdcTk9zTmjZrjj1HcP1uYNmqe50PDR+Bcz/hmEfO9pzFq1Jzv2ip4X1rBO+8K9i0q2HvSRix4g7SCXXxtxLxX+cgqmIs0qodR1DVqBXOxgkatIGIFjVpBxAoalUVj2riB+6+CuVhBo1YQseCvhrWNmmfzIRFdxKJPNlE1atnHRKkiln3EkKZRi76eqkZxW/i5goqIBZ/90Qk3atFX071gxL/WFY4WatTSTzNrghGL79Im1KgOzk0cHsUX6+LiGIjo5RDa8xGdnEF7fi4WfFLUqf5RfCr8nu1Ib8TSb9mOuT+TvecLfxdL4ZH1w2E+h7+N0Bz+vsXczTLxQ7vcef6NEgAAAAAAAAAAAAAAAAAAAAAA4MY/LVsjRTzfaLgAAAAASUVORK5CYII="
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M2 18.1122C2 15.9988 3.67893 14.2856 5.75 14.2856H6.09087C6.27536 14.2856 6.45869 14.3154 6.63407 14.3738L7.49959 14.6622C8.96187 15.1494 10.5381 15.1494 12.0004 14.6622L12.8659 14.3738C13.0413 14.3154 13.2246 14.2856 13.4091 14.2856H13.75C15.8211 14.2856 17.5 15.9988 17.5 18.1122V19.3247C17.5 20.0933 16.9541 20.7486 16.2107 20.8725C11.9319 21.5853 7.5681 21.5853 3.28927 20.8725C2.54588 20.7486 2 20.0933 2 19.3247V18.1122ZM5.75 15.8162C4.50736 15.8162 3.5 16.8442 3.5 18.1122V19.3247C3.5 19.3432 3.51311 19.3589 3.53097 19.3619C7.64972 20.048 11.8503 20.048 15.969 19.3619C15.9869 19.3589 16 19.3432 16 19.3247V18.1122C16 16.8442 14.9926 15.8162 13.75 15.8162H13.4091C13.3828 15.8162 13.3566 15.8205 13.3315 15.8288L12.466 16.1172C10.7012 16.7053 8.79881 16.7053 7.03398 16.1172L6.16847 15.8288C6.14342 15.8205 6.11722 15.8162 6.09087 15.8162H5.75Z"
+                          fill="#363352"
                         />
-                      </defs>
-                    </svg>
+                        <path
+                          d="M18.25 7.14277C18.6642 7.14277 19 7.48541 19 7.90807V9.69379H20.75C21.1642 9.69379 21.5 10.0364 21.5 10.4591C21.5 10.8818 21.1642 11.2244 20.75 11.2244H19V13.0101C19 13.4328 18.6642 13.7754 18.25 13.7754C17.8358 13.7754 17.5 13.4328 17.5 13.0101V11.2244H15.75C15.3358 11.2244 15 10.8818 15 10.4591C15 10.0364 15.3358 9.69379 15.75 9.69379H17.5V7.90807C17.5 7.48541 17.8358 7.14277 18.25 7.14277Z"
+                          fill="#363352"
+                        />
+                      </svg>
+                    </div>
                   </div>
+                  <div className={styles.userItem}>
+                    <div className={styles.left}>
+                      <h5>Junaid</h5>
+                      <h6>9656609275</h6>
+                    </div>
+                    <div className={styles.right}>
+                      <svg
+                        width="24"
+                        height="25"
+                        viewBox="0 0 24 25"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M5.5 8.41828C5.5 6.02317 7.40279 4.08154 9.75 4.08154C12.0972 4.08154 14 6.02317 14 8.41828C14 10.8134 12.0972 12.755 9.75 12.755C7.40279 12.755 5.5 10.8134 5.5 8.41828ZM9.75 5.61216C8.23122 5.61216 7 6.8685 7 8.41828C7 9.96806 8.23122 11.2244 9.75 11.2244C11.2688 11.2244 12.5 9.96806 12.5 8.41828C12.5 6.8685 11.2688 5.61216 9.75 5.61216Z"
+                          fill="#363352"
+                        />
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M2 18.1122C2 15.9988 3.67893 14.2856 5.75 14.2856H6.09087C6.27536 14.2856 6.45869 14.3154 6.63407 14.3738L7.49959 14.6622C8.96187 15.1494 10.5381 15.1494 12.0004 14.6622L12.8659 14.3738C13.0413 14.3154 13.2246 14.2856 13.4091 14.2856H13.75C15.8211 14.2856 17.5 15.9988 17.5 18.1122V19.3247C17.5 20.0933 16.9541 20.7486 16.2107 20.8725C11.9319 21.5853 7.5681 21.5853 3.28927 20.8725C2.54588 20.7486 2 20.0933 2 19.3247V18.1122ZM5.75 15.8162C4.50736 15.8162 3.5 16.8442 3.5 18.1122V19.3247C3.5 19.3432 3.51311 19.3589 3.53097 19.3619C7.64972 20.048 11.8503 20.048 15.969 19.3619C15.9869 19.3589 16 19.3432 16 19.3247V18.1122C16 16.8442 14.9926 15.8162 13.75 15.8162H13.4091C13.3828 15.8162 13.3566 15.8205 13.3315 15.8288L12.466 16.1172C10.7012 16.7053 8.79881 16.7053 7.03398 16.1172L6.16847 15.8288C6.14342 15.8205 6.11722 15.8162 6.09087 15.8162H5.75Z"
+                          fill="#363352"
+                        />
+                        <path
+                          d="M18.25 7.14277C18.6642 7.14277 19 7.48541 19 7.90807V9.69379H20.75C21.1642 9.69379 21.5 10.0364 21.5 10.4591C21.5 10.8818 21.1642 11.2244 20.75 11.2244H19V13.0101C19 13.4328 18.6642 13.7754 18.25 13.7754C17.8358 13.7754 17.5 13.4328 17.5 13.0101V11.2244H15.75C15.3358 11.2244 15 10.8818 15 10.4591C15 10.0364 15.3358 9.69379 15.75 9.69379H17.5V7.90807C17.5 7.48541 17.8358 7.14277 18.25 7.14277Z"
+                          fill="#363352"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.footer}>
+                  <h5>Search By</h5>
+                  <img src="/asset/elastic_logo.png" alt="elastic" />
                 </div>
               </div>
             )}
-            <input
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              type="number"
-              placeholder="Phone No"
-            />
-            <div className={styles.icon}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M5.5 8.25C5.5 5.90279 7.40279 4 9.75 4C12.0972 4 14 5.90279 14 8.25C14 10.5972 12.0972 12.5 9.75 12.5C7.40279 12.5 5.5 10.5972 5.5 8.25ZM9.75 5.5C8.23122 5.5 7 6.73122 7 8.25C7 9.76878 8.23122 11 9.75 11C11.2688 11 12.5 9.76878 12.5 8.25C12.5 6.73122 11.2688 5.5 9.75 5.5Z"
-                  fill="white"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M2 17.75C2 15.6789 3.67893 14 5.75 14H6.09087C6.27536 14 6.45869 14.0292 6.63407 14.0864L7.49959 14.3691C8.96187 14.8465 10.5381 14.8465 12.0004 14.3691L12.8659 14.0864C13.0413 14.0292 13.2246 14 13.4091 14H13.75C15.8211 14 17.5 15.6789 17.5 17.75V18.9383C17.5 19.6915 16.9541 20.3337 16.2107 20.4551C11.9319 21.1537 7.5681 21.1537 3.28927 20.4551C2.54588 20.3337 2 19.6915 2 18.9383V17.75ZM5.75 15.5C4.50736 15.5 3.5 16.5074 3.5 17.75V18.9383C3.5 18.9564 3.51311 18.9718 3.53097 18.9747C7.64972 19.6472 11.8503 19.6472 15.969 18.9747C15.9869 18.9718 16 18.9564 16 18.9383V17.75C16 16.5074 14.9926 15.5 13.75 15.5H13.4091C13.3828 15.5 13.3566 15.5042 13.3315 15.5123L12.466 15.795C10.7012 16.3712 8.79881 16.3712 7.03398 15.795L6.16847 15.5123C6.14342 15.5042 6.11722 15.5 6.09087 15.5H5.75Z"
-                  fill="white"
-                />
-                <path
-                  d="M18.25 7C18.6642 7 19 7.33579 19 7.75V9.5H20.75C21.1642 9.5 21.5 9.83579 21.5 10.25C21.5 10.6642 21.1642 11 20.75 11H19V12.75C19 13.1642 18.6642 13.5 18.25 13.5C17.8358 13.5 17.5 13.1642 17.5 12.75V11H15.75C15.3358 11 15 10.6642 15 10.25C15 9.83579 15.3358 9.5 15.75 9.5H17.5V7.75C17.5 7.33579 17.8358 7 18.25 7Z"
-                  fill="white"
-                />
-              </svg>
-            </div>
           </div>
-          {/* <Menu menuButton={<MenuButton> </MenuButton>}></Menu> */}
-          <div className={styles.navInviteUser}>
+        </div>
+        <div className={styles.nav}>
+          {/* <div className={styles.navInviteUser}>
             <h5>Invite customer</h5>
             <div className={styles.icon}>
               <svg
@@ -159,6 +174,41 @@ const TopNav = ({ setOpen, open }: Props) => {
                 />
               </svg>
             </div>
+          </div> */}
+          <div className={styles.notification}>
+            <svg
+              width="16"
+              height="20"
+              viewBox="0 0 16 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.58319 1C8.58319 0.447715 8.13548 0 7.58319 0C7.03091 0 6.58319 0.447715 6.58319 1V1.75H6.02577C3.8007 1.75 1.9591 3.48001 1.82021 5.70074L1.5992 9.2342C1.51494 10.5814 1.06266 11.8797 0.291595 12.9876C-0.405087 13.9886 0.215133 15.3712 1.42606 15.5165L4.83319 15.9254V17C4.83319 18.5188 6.06441 19.75 7.58319 19.75C9.10197 19.75 10.3332 18.5188 10.3332 17V15.9254L13.7403 15.5165C14.9512 15.3712 15.5715 13.9886 14.8748 12.9876C14.1037 11.8797 13.6514 10.5814 13.5672 9.2342L13.3462 5.70074C13.2073 3.48001 11.3657 1.75 9.1406 1.75H8.58319V1ZM6.02577 3.25C4.59277 3.25 3.40673 4.36417 3.31728 5.79438L3.09628 9.32784C2.99488 10.949 2.45063 12.5112 1.52278 13.8444C1.47243 13.9168 1.51725 14.0167 1.60478 14.0272L5.34244 14.4757C6.83093 14.6543 8.33544 14.6543 9.82393 14.4757L13.5616 14.0272C13.6491 14.0167 13.6939 13.9168 13.6436 13.8444C12.7157 12.5112 12.1715 10.949 12.0701 9.32784L11.8491 5.79438C11.7596 4.36417 10.5736 3.25 9.1406 3.25H6.02577ZM7.58319 18.25C6.89283 18.25 6.33319 17.6904 6.33319 17V16.25H8.83319V17C8.83319 17.6904 8.27355 18.25 7.58319 18.25Z"
+                fill="#363352"
+                fillOpacity="0.37"
+              />
+            </svg>
+          </div>
+          <div className={styles.profile}>
+            <div className={styles.photo}>{/* <img src="" alt="" /> */}</div>
+            <h2>Junaid</h2>
+            <svg
+              width="12"
+              height="8"
+              viewBox="0 0 12 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L5.50292 6L10.0058 1"
+                stroke="#979797"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
         </div>
       </div>
